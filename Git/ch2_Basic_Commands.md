@@ -128,6 +128,6 @@ Assume you write code in a new branch.
 1. check status：`git status`
 2. add to staging area：`git add filename`
 3. submit with comments：`git commit -m “your code comments”`
-4. switch to master branch：`git checkout master`
+4. switch to master branch：`git checkout main`
 5. merge branchs：`git merge branchname`
 6. sync remote repository：`git push`
