@@ -56,13 +56,61 @@ Pointers are address variable which are used for indirectly accessing the data.
 3. Parameter passing.
 
 ```c++
-int a=10; //data variable
+int a = 10; //data variable
 int *p; //address variable
-p=&a; //initialize p with address of a
+p = &a; //initialize p with address of a
 printf("%d",p); //address stored in p;
 printf("%d",*p); //dereferencing, value stored in the address p points
+(*p)++; //the value in address p has plus one, so a=11 and p doesn't change.
 ```
 
+### An Example of Change Value by Pointer
+
 ```c++
-p=(int *)malloc(n*sizeof(int));
+void func(int *x, int *y)
+{
+    int t;
+    t = *x;
+    *x = *y;
+    *y = t;
+}
+int main()
+{
+    int x = 11, y = 22;
+    func(&x,&y);
+    std::cout << x << y; //execution is 2211
+    return 0;
+}
 ```
+
+**Caution**:Morphological parameters of function are new local variables which is different from the arguments outside the function, even though they have same name.
+
+```c++
+void func(int x, int y)
+{
+    std::cout << &x << std::endl; //address of x here is different from that of x in main()
+    int t;
+    t = x;
+    x = y;
+    y = t;
+}
+int main()
+{
+    int x = 11, y = 22;
+    func(x,y);
+    std::cout << &x << std::endl; // address of x here is different from that of x in func()
+    std::cout << x << y;//execution is 1122 which means the values of x,y aren't changed
+    return 0;
+}
+```
+
+### Access Memory in Heap
+
+In C language, the function `malloc()` is used to allocate the memory in heap.
+In C++ language, the operator `new` is used for the ssame purpose.
+
+```c++
+p = (int *)malloc(n*sizeof(int));
+p = new int[5];
+```
+

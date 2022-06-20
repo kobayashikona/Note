@@ -31,6 +31,13 @@ git remote set-url origin  https://<your_token>@github.com/<USERNAME>/<REPO>.git
 
 After that, you can use `git pull` just like before.
 
+**Error**: If the terminal reports an error like `Failed to connect to github.com port 443: Connection refused`, you can check whether set up the proxy or not. If not, run the cancel proxy command.
+```
+git config --global http.proxy #ckeck pproxy
+git config --global --unset http.proxy # cancel pproxy
+git config --global http.proxy http:172.16.13.171:8080 #set up the proxy
+```
+
 Similarly, when you need to clone repository, you can type
 ```
 git clone https://<TOKEN>@github.com/<user_name>/<repo_name>.git
