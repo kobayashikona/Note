@@ -35,3 +35,34 @@ int main()
 }
 ```
 The variable is created inside the stack for the main function.
+
+When there are multiple elements in the structure, the minimum unit of memory allocation is 4 bytes,for example:
+```c++
+struct Rectangle
+{
+    int length;
+    int breadth;
+    char c;
+}r;
+```
+If we check the size of r, we will find it access 12 bytes space and use 9 of them.
+
+## Pointers
+
+Pointers are address variable which are used for indirectly accessing the data.
+
+1. Program can access stack and code section, while it can't access heap. So one reason for using pointers is to access memory in heap.
+2. One major using of pointers is accessing the resources which are outside the program, such as disk, monitors, keyboardand internet.
+3. Parameter passing.
+
+```c++
+int a=10; //data variable
+int *p; //address variable
+p=&a; //initialize p with address of a
+printf("%d",p); //address stored in p;
+printf("%d",*p); //dereferencing, value stored in the address p points
+```
+
+```c++
+p=(int *)malloc(n*sizeof(int));
+```
