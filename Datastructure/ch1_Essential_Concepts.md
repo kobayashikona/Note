@@ -47,6 +47,12 @@ struct Rectangle
 ```
 If we check the size of r, we will find it access 12 bytes space and use 9 of them.
 
+It's not necessary to use the word struct when we want to declare an object of structure in C++.
+```c++
+rectangle r = {10, 5}; // It's same as struct rectangle r = {10, 5}; in C++
+struct rectangle r = {10, 5}; // We must bring the word struct in C language 
+```
+
 ## Pointers
 
 Pointers are address variable which are used for indirectly accessing the data.
@@ -110,7 +116,94 @@ In C language, the function `malloc()` is used to allocate the memory in heap.
 In C++ language, the operator `new` is used for the ssame purpose.
 
 ```c++
+// Pointer p has not been deleted when we release the space it points to, the address it points to hasn't been changed.
+// We need to give it a value, otherwise, it will be regarded as a legal pointer while it doesn't points legal memory.
+int *p;
+
 p = (int *)malloc(n*sizeof(int));
+free (p);
+p = NULL; 
+
+// new/delete and new[]/delete[] should be use in pairs.
 p = new int[5];
+delete []p;
+p = NULL;
 ```
 
+### Pointer to Structure
+
+```c++
+struct rectangle r = {10, 5};
+struct rectangle *p = &r; //a pointer points to r
+
+// Two ways to ccess member of structure using pointer
+(*p).length = 20; // the precedence of . is higher than *
+p->length = 20; // we use arrow to access menber of struct p points to
+```
+
+**Dynamic structure:**
+
+```c++
+// Create a struct in heap
+struct rectangle *p;
+p = (struct rectangle *)malloc(sizeof(struct rectangle));
+p->length = 10;
+p->breadth = 5;
+```
+
+## Reference
+
+It is another name of a variable. The common use of reference is parameter passing in functions.
+
+```c++
+int a = 10;
+int &r = a; //r is another name of a. They have same address.
+
+r++; 
+std::cout << a; //The value is 11 rather than 10
+std::cout << r; //11 as well 
+```
+
+**Note:**
+
+- The variable declared by `int *r` will sotre address.
+- The variable declared by `int &r` will sotre integer value, and it must be initialized at the same time.
+- `int &r = a; r = b;` won't switch r to reference of b, it'll just change the value of a.
+
+
+## Functions
+
+Function is a piece of code which performs a task.
+
+When a fuction start, local variables in it will be created in stack. And these variables will be deleted once the function ends. 
+
+Ways to pass parameters
+1. Pass by Value
+```c++
+// All changes are done to formal parameters
+void swap(int x, int y)
+{
+    ...
+}
+...
+int a = 10, b = 5;
+swap(a, b);
+```
+
+2. Pass by Address
+```c++
+// The changes are done to value stored in corresponding address
+void swap(int* x, int* y)
+{
+    ...
+}
+...
+int a = 10, b = 5;
+swap(&a, &b);
+```
+3. Pass by Reference
+
+
+
+
+## Template
