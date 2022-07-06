@@ -10,7 +10,7 @@ int B[5]={2,5,8,1,6}; \\declare and initialize
 Main memory are divided into code section, stack and heap. The varibles defined in the body of the function are stored inside the stack,such as the arrays above.
 
 ### Variable Sized Array
-It's allowed to creat an array whose size is identified by a variable instead of a const. In this way, we can't initialize this array when creating it.
+It's allowed to create an array whose size is identified by a variable instead of a constant. In this way, we can't initialize this array when creating it.
 ```c++
 int n;
 std::cin >> n;
@@ -58,7 +58,7 @@ struct rectangle r = {10, 5}; // We must bring the word struct in C language
 Pointers are address variable which are used for indirectly accessing the data.
 
 1. Program can access stack and code section, while it can't access heap. So one reason for using pointers is to access memory in heap.
-2. One major using of pointers is accessing the resources which are outside the program, such as disk, monitors, keyboardand internet.
+2. One major using of pointers is accessing the resources which are outside the program, such as disk, monitors, keyboard and Internet.
 3. Parameter passing.
 
 ```c++
@@ -89,7 +89,7 @@ int main()
 }
 ```
 
-**Caution**:Morphological parameters of function are new local variables which is different from the arguments outside the function, even though they have same name.
+**Caution：** Morphological parameters of function are new local variables which is different from the arguments outside the function, even though they have same name.
 
 ```c++
 void func(int x, int y)
@@ -175,7 +175,7 @@ std::cout << r; //11 as well
 
 Function is a piece of code which performs a task.
 
-When a fuction start, local variables in it will be created in stack. And these variables will be deleted once the function ends. 
+When a function start, local variables in it will be created in stack. And these variables will be deleted once the function ends. 
 
 Ways to pass parameters
 1. Pass by Value
